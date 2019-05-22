@@ -16,6 +16,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let ud = UserDefaults.standard
+        
+        if !ud.bool(forKey: "firstRun") {
+            ud.set(true, forKey: "firstRun")
+            ud.set(13, forKey: "bab")
+            ud.set(15, forKey: "dex")
+            ud.set(3, forKey: "SADice")
+            ud.set(4, forKey: "favoredEnemyBonus")
+            ud.set(3, forKey: "studiedTargetBonus")
+            ud.set(2, forKey: "miscAttack")
+            ud.set(1, forKey: "miscDamage")
+            ud.set(5, forKey: "numberAttack")
+            ud.set(false, forKey: "autoAttack")
+            ud.set(false, forKey: "autoDamage")
+            
+            ud.set(1, forKey: "highestAC")
+            ud.set(false, forKey: "PBS")
+            ud.set(false, forKey: "SA")
+            ud.set(true, forKey: "deadlyAim")
+            ud.set(false, forKey: "gravBow")
+            ud.set(false, forKey: "favoredEnemy")
+            ud.set(false, forKey: "studiedTarget")
+            ud.set(false, forKey: "holy")
+            ud.set(false, forKey: "bane")
+        }
+        
+        
+        
         return true
     }
 
