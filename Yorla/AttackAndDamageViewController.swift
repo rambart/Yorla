@@ -20,6 +20,7 @@ class AttackAndDamageViewController: UIViewController {
             showSelectedAttack()
         }
     }
+    var fullAttack = true
     
     // MARK: - Outlets
     @IBOutlet weak var headerLabel: UILabel!
@@ -40,14 +41,20 @@ class AttackAndDamageViewController: UIViewController {
         table.delegate = self
         table.dataSource = self
         
-        
-        for i in 1...(ud.value(forKey: "numberAttack") as! Int) {
-            if i <= 2 {
-                attackRolls.append(AttackRoll(from: attack, manyShot: true))
-            } else {
-                attackRolls.append(AttackRoll(from: attack, manyShot: false))
+        if fullAttack {
+            attack.attackBonus -= 2
+            for i in 1...(ud.value(forKey: "numberAttack") as! Int) {
+                if i <= 2 {
+                    attackRolls.append(AttackRoll(from: attack, manyShot: true))
+                } else {
+                    attackRolls.append(AttackRoll(from: attack, manyShot: false))
+                }
             }
+        } else {
+            attackRolls.append(AttackRoll(from: attack, manyShot: false))
         }
+        
+        
         update()
     }
     
@@ -248,7 +255,7 @@ extension AttackAndDamageViewController: UITableViewDelegate, UITableViewDataSou
             cell.confirmLabel.textColor = UIColor.orange
         }
         
-        if indexPath.row <= 1 {
+        if indexPath.row <= 1 && fullAttack {
             cell.attackTitle.text = "Attack \(indexPath.row + 1) (Manyshot)"
         } else {
             cell.attackTitle.text = "Attack \(indexPath.row + 1)"

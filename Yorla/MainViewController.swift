@@ -97,13 +97,16 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         if ud.bool(forKey: "SA") {
             let saDice = ud.value(forKey: "SADice") as! Int
             attack.nonCritDice += saDice
+            if ud.bool(forKey: "PBS") {
+                attack.damageBonus += (2 * saDice)
+            }
         }
         
         if ud.bool(forKey: "deadlyAim") {
             let bab = ud.value(forKey: "bab") as! Int
             let daMultiplier = bab / 4
             attack.attackBonus -= daMultiplier
-            attack.damageBonus += (2 * daMultiplier)
+            attack.damageBonus += (3 * daMultiplier)
         }
         
         if ud.bool(forKey: "gravBow") {
@@ -129,9 +132,10 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         if ud.bool(forKey: "bane") {
             attack.attackBonus += 2
             attack.damageBonus += 2
-            attack.nonCritDice += 2
+            attack.nonCritDice += 4
 
         }
+        
         
     }
     
@@ -143,8 +147,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     
     // MARK: - Buttons
-    @IBAction func Commence(_ sender: Any) {
-        performSegue(withIdentifier: "commence", sender: self)
+    @IBAction func Commence(_ sender: UIButton) {
+        performSegue(withIdentifier: "commence", sender: sender)
     }
     
     @IBAction func switched(_ sender: UISwitch) {
@@ -168,6 +172,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             ud.set(sender.isOn, forKey: "holy")
         case 8:
             ud.set(sender.isOn, forKey: "bane")
+        case 9:
+            ud.set(sender.isOn, forKey: "critMaster")
         default:
             break
         }
@@ -189,6 +195,11 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         if segue.identifier == "commence" {
             let advc = segue.destination as! AttackAndDamageViewController
             advc.attack = attack
+            if let tag = (sender as? UIButton)?.tag {
+                if tag > 0 {
+                    advc.fullAttack = false
+                }
+            }
         }
     }
     

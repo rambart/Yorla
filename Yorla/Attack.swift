@@ -61,8 +61,8 @@ class Attack {
             break
         }
         
-        
-        let diceResults = rollDice(x: diceNumber, d: diceSize, fickle: fickle)
+        let critMaster = UserDefaults.standard.bool(forKey: "critMaster")
+        let diceResults = rollDice(x: diceNumber, d: diceSize, fickle: fickle, max: (critMaster && diceSize == 6))
         
         
         return ((diceResults.result + bonus), diceResults.rolls)
@@ -70,7 +70,7 @@ class Attack {
     
     
     
-    func rollDice(x: Int, d: Int, fickle: Bool = true) -> (result: Int, rolls: [Int]) {
+    func rollDice(x: Int, d: Int, fickle: Bool = true, max: Bool = false) -> (result: Int, rolls: [Int]) {
         var total: Int = 0
         var rolls = [Int]()
         let dice = GKRandomDistribution(lowestValue: 1, highestValue: d)
@@ -81,6 +81,13 @@ class Attack {
             }
             total += rollResult
             rolls.append(rollResult)
+        }
+        if max {
+            total = x * d
+            rolls = [Int]()
+            for _ in 1...x {
+                rolls.append(d)
+            }
         }
         return (total, rolls)
     }

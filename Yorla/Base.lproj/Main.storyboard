@@ -319,17 +319,30 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hLR-qB-0ZX" userLabel="ButtonsStck">
                                 <rect key="frame" x="16" y="678" width="382" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4qS-RN-Ia1">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4qS-RN-Ia1">
+                                        <rect key="frame" x="0.0" y="0.0" width="187" height="50"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="tZm-gr-JNQ"/>
+                                        </constraints>
+                                        <state key="normal" title="Single Attack">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="Commence:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FJs-pA-nYu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOb-RE-oha">
+                                        <rect key="frame" x="195" y="0.0" width="187" height="50"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="3jq-ht-hY5"/>
                                         </constraints>
                                         <state key="normal" title="Commence The Barrage!">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="Commence:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FJs-pA-nYu"/>
+                                            <action selector="Commence:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xhm-OZ-0Tj"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -338,10 +351,10 @@
                                 <rect key="frame" x="0.0" y="178.33333333333334" width="414" height="491.66666666666663"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dAQ-Wi-kYT">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="443.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="490.33333333333331"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ZqZ-Ck-vuJ">
-                                                <rect key="frame" x="16" y="8" width="382" height="427.33333333333331"/>
+                                                <rect key="frame" x="16" y="8" width="382" height="474.33333333333331"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FC3-xI-3tz">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="51.333333333333336"/>
@@ -497,7 +510,25 @@
                                                                     <action selector="switched:" destination="BYZ-38-t0r" eventType="valueChanged" id="btC-xN-Wr9"/>
                                                                 </connections>
                                                             </switch>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bane" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eq6-lh-z0g">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Greater Bane" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eq6-lh-z0g">
+                                                                <rect key="frame" x="65" y="0.0" width="317" height="31"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="pf8-Ry-D5f">
+                                                        <rect key="frame" x="0.0" y="443.33333333333326" width="382" height="31"/>
+                                                        <subviews>
+                                                            <switch opaque="NO" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WhA-os-QEr">
+                                                                <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                                                <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <connections>
+                                                                    <action selector="switched:" destination="BYZ-38-t0r" eventType="valueChanged" id="fZd-Dp-nII"/>
+                                                                </connections>
+                                                            </switch>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Critical Master (Battlemind Link)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvb-uM-qxg">
                                                                 <rect key="frame" x="65" y="0.0" width="317" height="31"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
